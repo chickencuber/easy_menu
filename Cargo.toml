@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 license = "MIT"
 authors = ["chickencuber"]
-repository = "https://github.com/chickencuber/simple_menu"
+repository = "https://github.com/chickencuber/easy_menu"
 description = "a crate that adds a simple menu"
 
 [dependencies]
