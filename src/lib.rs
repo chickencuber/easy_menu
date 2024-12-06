@@ -49,7 +49,7 @@ impl Menu {
                 continue;
             }
             if self.options.len() == 0 {
-                term.hide_cursor().unwrap();   
+                term.show_cursor().unwrap();   
                 term.clear_screen().unwrap();
                 return String::from("");
             }
