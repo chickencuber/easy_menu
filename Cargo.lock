@@ -16,6 +16,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "easy_menu"
+version = "0.1.0"
+dependencies = [
+ "console",
+]
+
+[[package]]
 name = "encode_unicode"
 version = "0.3.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -32,13 +39,6 @@ name = "libc"
 version = "0.2.167"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "09d6582e104315a817dff97f75133544b2e094ee22447d2acf4a74e189ba06fc"
-
-[[package]]
-name = "simple_menu"
-version = "0.1.0"
-dependencies = [
- "console",
-]
 
 [[package]]
 name = "unicode-width"

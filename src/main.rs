@@ -1,4 +1,4 @@
-use simple_menu::{Menu, MenuOptions, Style, Key, Event};
+use easy_menu::{Menu, MenuOptions, Style, Key, Event};
 
 
 fn main() {
