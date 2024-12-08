@@ -74,13 +74,13 @@ impl Menu {
                 Event::None => (),
             }
         }
+        term.clear_screen().unwrap();
+
+        term.show_cursor().unwrap();
 
         if canceled {
             return value;
         }
-        term.clear_screen().unwrap();
-
-        term.show_cursor().unwrap();
         
         self.options[self.selected].clone()
     }
