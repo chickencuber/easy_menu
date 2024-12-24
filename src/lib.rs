@@ -1,6 +1,8 @@
 use console::Term;
 pub use console::{Key, Style, Color};
 use std::cmp::min;
+use std::thread;
+use std::time::Duration;
 
 
 pub struct Menu {
@@ -29,6 +31,30 @@ impl Menu {
         term.show_cursor().unwrap();
         let user_input = term.read_line().unwrap(); 
         return user_input; 
+    }
+
+    fn get_event(&mut self, term: &Term) -> Event {
+        let t = thread::spawn(|| {
+            return Term::stdout().read_key().unwrap();
+        });
+        let e: Event;
+        let mut tick: u32 = 0;
+        loop {
+            if t.is_finished() {
+                e = (self.settings.key)(t.join().unwrap(), self);
+                term.clear_screen().unwrap();
+                break;
+            }
+            if tick % 1000000 == 0 {
+                term.clear_screen().unwrap();
+                let (term_height, term_width) = term.size();
+
+
+                self.render_options(term_width as usize, term_height as usize - 1);
+            }
+            tick = tick.wrapping_add(1);
+        }
+        return e;
     }
 
     pub fn run(&mut self) -> String {
@@ -60,7 +86,7 @@ impl Menu {
 
             self.render_options(term_width as usize, term_height as usize - 1);
             
-            let event = (self.settings.key)(term.read_key().unwrap(), self);
+            let event = self.get_event(&term);
             
             match event {
                 Event::Up => self.scroll_up(),
