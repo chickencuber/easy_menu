@@ -2,7 +2,6 @@ use console::Term;
 pub use console::{Key, Style, Color};
 use std::cmp::min;
 use std::thread;
-use std::time::Duration;
 
 
 pub struct Menu {
