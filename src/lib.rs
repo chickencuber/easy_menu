@@ -44,7 +44,8 @@ impl Menu {
                 term.clear_screen().unwrap();
                 break;
             }
-            if tick % 1000000 == 0 {
+            if tick > 100000000 {
+                tick = 0;
                 term.clear_screen().unwrap();
                 let (term_height, term_width) = term.size();
 
@@ -165,6 +166,7 @@ pub struct MenuOptions {
 impl Default for MenuOptions {
     fn default() -> Self {
         Self {
+
             style_selected: Style::new().bg(Color::Color256(241)),  
             style_normal: Style::new(),
             key: |key, _| -> Event {
